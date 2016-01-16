@@ -1,6 +1,10 @@
 body {
   font-family: "Muli", sans-serif;
-  color: #333; }
+  color: #333;
+  text-transform: lowercase; }
+
+a:hover {
+  text-decoration: none; }
 
 .jumbotron {
   background-color: #ff7d56;
@@ -16,11 +20,17 @@ body {
 
 .body {
   margin: 0;
-  padding-top: 20px;
-  padding-bottom: 20px; }
+  padding: 75px;
+  text-align: center; }
+  .body .container {
+    padding: 25px; }
+
+.form-group {
+  width: 50%; }
 
 .footer {
   background-color: #FFE2BD;
+  color: #555;
   padding-top: 20px;
   padding-bottom: 20px; }
 

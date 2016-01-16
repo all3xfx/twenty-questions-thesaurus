@@ -8,6 +8,11 @@ $color5: #FFE2BD;
 body {
   font-family: $font-stack;
   color: #333;
+  text-transform: lowercase;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .jumbotron {
@@ -29,12 +34,21 @@ body {
 
 .body {
   margin: 0;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 75px;
+  text-align: center;
+
+  .container {
+    padding: 25px;
+  }
+}
+
+.form-group {
+  width: 50%;
 }
 
 .footer {
   background-color: $color5;
+  color: #555;
   padding-top: 20px;
   padding-bottom: 20px;
 }
