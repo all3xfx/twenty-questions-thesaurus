@@ -3,6 +3,9 @@ body {
   color: #333;
   text-transform: lowercase; }
 
+a:hover {
+  text-decoration: none; }
+
 .jumbotron {
   background-color: #FF7E73;
   color: #FFE45D;

@@ -36,9 +36,10 @@ def static_page(page_name):
     return render_template('%s.html' % page_name)
 
 
-@app.route('/det-pos', methods=['POST'])
+@app.route('/det_pos', methods=['POST'])
 def determine_pos():
-    return redirect(url_for('determine_similar_word'))
+    flash('PART OF SPEECH CHOSEN')
+    return render_template('index.html')
 
 
 @app.route('/det-simword', methods=['POST'])

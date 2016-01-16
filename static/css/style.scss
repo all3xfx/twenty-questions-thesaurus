@@ -11,6 +11,10 @@ body {
   text-transform: lowercase;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .jumbotron {
   background-color: $color4;
   color: $color1;

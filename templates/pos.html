@@ -3,7 +3,7 @@
 <h3>What part of speech is the word?</h3><br>
 
 <form>
-  <div class="form-group" method=post>
+  <div class="form-group" method=post action="{{ url_for('determine_pos') }}">
     <select class="form-control" name="pos">
       <option value="noun">Noun</option>
       <option value="pronoun">Pronoun</option>
