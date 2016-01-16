@@ -1,13 +1,12 @@
 from scrapy import Spider
 import re
 import urlparse
+from start_urls import urls
 
 class ThesaurusSpider(Spider):
     name = "thesaurus"
     allowed_domains = ["thesaurus.com"]
-    start_urls = ["http://www.thesaurus.com/browse/community?s=t", "http://www.thesaurus.com/browse/bob?s=t",
-                  "http://www.thesaurus.com/browse/people?s=t", "http://www.thesaurus.com/browse/machiavellian?s=t",
-                  "http://www.thesaurus.com/browse/fantastic?s=t"]
+    start_urls = urls
 
     def parse(self, response):
         wordname = response.url.split("/")[-1][:-4]
@@ -16,8 +15,8 @@ class ThesaurusSpider(Spider):
         relevance3 = re.findall("<.*&quot;relevant-3&quot;.*>", synonym_body)
         relevance2 = re.findall("<.*&quot;relevant-2&quot;.*>", synonym_body)
         relevance1 = re.findall("<.*&quot;relevant-1&quot;.*>", synonym_body)
-        print "======\n" + str(len(relevance3) + len(relevance2) + len(relevance1)) \
-              + " synonyms found for "+ wordname + ".\n" + "======"
+        num_synonyms = len(relevance3) + len(relevance2) + len(relevance1)
+        print "======\n" + str(num_synonyms) + " synonyms found for "+ wordname + ".\n" + "======"
         word_list = []
         synonyms = []
         synonyms.extend(relevance3)
@@ -32,4 +31,8 @@ class ThesaurusSpider(Spider):
                 word = re.sub('%20', ' ', word)
                 word = urlparse.unquote(word)
                 word_list.append(word)
-        print word_list
+
+
+        with open("synonym_logging.txt", "a") as myfile:
+            myfile.write(str(num_synonyms) + " synonyms for " + wordname + ":\n" + str(word_list) + "\n")
+
