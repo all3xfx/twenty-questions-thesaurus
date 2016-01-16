@@ -36,4 +36,18 @@ class SynonymInterface:
     def find_synonyms(self, word):
         return self.word_assoc_graph[word]
 
-
+    def deal_with_synonym_outside_of_graph(self, root, synonym):
+        """
+        When a synonym outside of the graph is encountered,
+        this should be run to find appropriate synonyms for that word.
+        :param root: a string key in the graph
+        :param synonym: a string key not in the graph
+        :return: a dict of string: list(string) showing the proper synonyms
+        """
+        close_synonyms = list(self.word_assoc_graph[root])
+        close_synonyms.remove(synonym)
+        output_synonyms = [root]
+        for syn in close_synonyms:
+            if synonym in self.word_assoc_graph[syn]:
+                output_synonyms.append(syn)
+        return {synonym: output_synonyms}
