@@ -1,10 +1,11 @@
 from enum import Enum
 from WordGraphParser import WordGraphParser
 
-"""
-Enum class for standard parts of speech.
-"""
+
 class PartOfSpeech(Enum):
+    """
+    Enum class for standard parts of speech.
+    """
     NOUN = "NOUN"
     PRONOUN = "PRONOUN"
     VERB = "VERB"
@@ -15,12 +16,11 @@ class PartOfSpeech(Enum):
     INTERJECTION = "INTERJECTION"
 
 
-
-"""
-The main class for interacting with the word association graph and returning synonym lists to the server.
-"""
 class SynonymInterface:
-    part_of_speech = PartOfSpeech.NOUN
+    """
+    The main class for interacting with the word association graph and returning synonym lists to the server.
+    """
+    # part_of_speech = PartOfSpeech.NOUN
     word_assoc_graph = None
 
     def __init__(self, part_of_speech):

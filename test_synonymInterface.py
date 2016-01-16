@@ -2,6 +2,7 @@ from unittest import TestCase
 from SynonymInterface import SynonymInterface
 from SynonymInterface import PartOfSpeech
 
+
 class TestSynonymInterface(TestCase):
     word_assoc_graph = {"red" : ["orange", "yellow"], "orange" : ["yellow", "red"], "yellow" : ["orange", "red"]}
     test_interface = SynonymInterface("NOUN")
