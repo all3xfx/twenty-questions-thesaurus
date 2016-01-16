@@ -1,0 +1,27 @@
+body {
+  font-family: "Muli", sans-serif;
+  color: #333; }
+
+.jumbotron {
+  background-color: #FF7E73;
+  color: #FFE45D;
+  text-transform: lowercase;
+  letter-spacing: -0.5px;
+  margin: 0;
+  border-bottom: 15px solid #E31263; }
+  .jumbotron .title {
+    font-weight: bolder; }
+  .jumbotron .subtitle {
+    color: #ffe877; }
+
+.body {
+  margin: 0;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+.footer {
+  background-color: #FFE2BD;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+/*# sourceMappingURL=style.css.map */
