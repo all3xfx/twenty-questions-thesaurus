@@ -4,7 +4,7 @@ from SynonymInterface import PartOfSpeech
 
 
 class TestSynonymInterface(TestCase):
-    word_assoc_graph = {"red" : ["orange", "yellow"], "orange" : ["yellow", "red"], "yellow" : ["orange", "red"]}
+    word_assoc_graph = {"red" : ["orange", "yellow", "crimson"], "orange" : ["yellow", "red", "crimson"], "yellow" : ["orange", "red"]}
     test_interface = SynonymInterface("NOUN")
     test_interface.word_assoc_graph = word_assoc_graph
 
@@ -18,4 +18,8 @@ class TestSynonymInterface(TestCase):
 
     def test_find_synonyms(self):
         self.assertEquals(self.test_interface.find_synonyms("yellow"), ["orange", "red"])
-        self.assertEquals(self.test_interface.find_synonyms("red"), ["orange", "yellow"])
+        self.assertEquals(self.test_interface.find_synonyms("red"), ["orange", "yellow", "crimson"])
+
+    def test_unknown_finder(self):
+        crimson_dict = self.test_interface.deal_with_synonym_outside_of_graph("red", "crimson")
+        self.assertEqual(crimson_dict["crimson"], ["red", "orange"])
