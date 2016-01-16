@@ -18,6 +18,11 @@ app.config.from_object(__name__)
 def connect_db():
     return sqlite3.connect(app.config['DATABASE'])
 
+# routes
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 # runs app
 if __name__ == '__main__':
     app.run()
