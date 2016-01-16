@@ -1,3 +1,5 @@
+import json
+import io
 from collections import defaultdict
 
 """
@@ -12,4 +14,6 @@ class WordGraphParser:
 
     @staticmethod
     def initialize_graph(filepath):
-        return defaultdict(list)
+        json_data = io.open(filepath)
+        dict_data = json.load(json_data)
+        return dict_data

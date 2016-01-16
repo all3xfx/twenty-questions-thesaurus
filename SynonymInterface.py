@@ -1,4 +1,5 @@
 from enum import Enum
+import json
 from WordGraphParser import WordGraphParser
 
 
@@ -12,7 +13,7 @@ class PartOfSpeech(Enum):
     ADJECTIVE = "ADJECTIVE"
     ADVERB = "ADVERB"
     PREPOSITION = "PREPOSITION"
-    CONJUNCTION= "CONJUNCTION"
+    CONJUNCTION = "CONJUNCTION"
     INTERJECTION = "INTERJECTION"
 
 
@@ -20,7 +21,7 @@ class SynonymInterface:
     """
     The main class for interacting with the word association graph and returning synonym lists to the server.
     """
-    # part_of_speech = PartOfSpeech.NOUN
+    part_of_speech = PartOfSpeech.NOUN
     word_assoc_graph = None
 
     def __init__(self, part_of_speech):
@@ -28,7 +29,7 @@ class SynonymInterface:
             self.part_of_speech = PartOfSpeech(part_of_speech)
         else:
             self.part_of_speech = PartOfSpeech("NOUN")
-        self.word_assoc_graph = WordGraphParser.initialize_graph("graph_data.json")
+        self.word_assoc_graph = WordGraphParser.initialize_graph("testdata.json")[self.part_of_speech.value]
 
     """
     Returns the synonyms of the input word in order of similarity.
