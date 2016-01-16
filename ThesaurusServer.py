@@ -1,7 +1,10 @@
 # all the imports
+from enum import Enum
 import sqlite3
+from SynonymInterface import SynonymInterface
 from flask import Flask, request, session, g, redirect, url_for, \
      abort, render_template, flash
+
 
 # configuration
 DATABASE = '/tmp/thesaurus.db'
@@ -19,6 +22,10 @@ def connect_db():
     return sqlite3.connect(app.config['DATABASE'])
 
 
+# creating global variables
+synonym_graph = None
+
+
 # routes
 @app.route('/')
 def index():
@@ -30,7 +37,9 @@ def index():
 
 @app.route('/det_pos', methods=['POST'])
 def determine_pos():
-    return redirect(url_for('determine_similar_word'))
+    # initializes synonym graph
+    synonym_graph = SynonymInterface("VERB")
+    return synonym_graph
 
 
 @app.route('/det_simword', methods=['POST'])
