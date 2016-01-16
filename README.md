@@ -2,3 +2,4 @@
 <h3>:sparkles: HackRice 2016 Project :sparkles:</h3>
 
 A web application for discovering that word on the tip of your tongue, inspired by the game Twenty Questions.
+Now running on pythonanywhere servers
