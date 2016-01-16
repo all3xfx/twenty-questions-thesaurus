@@ -30,9 +30,16 @@ body {
 
 .body {
   margin: 0;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding: 75px;
   text-align: center;
+
+  .container {
+    padding: 25px;
+  }
+}
+
+.form-group {
+  width: 50%;
 }
 
 .footer {

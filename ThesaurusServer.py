@@ -36,12 +36,12 @@ def static_page(page_name):
     return render_template('%s.html' % page_name)
 
 
-@app.route('/pos', methods=['POST'])
+@app.route('/det-pos', methods=['POST'])
 def determine_pos():
     return redirect(url_for('determine_similar_word'))
 
 
-@app.route('/simword', methods=['POST'])
+@app.route('/det-simword', methods=['POST'])
 def determine_similar_word():
     return redirect(url_for('determine_similar_word'))
 
