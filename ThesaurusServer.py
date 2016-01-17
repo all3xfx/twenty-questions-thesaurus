@@ -39,10 +39,15 @@ def index():
 def determine_pos():
     # initializes synonym graph
     synonym_graph = SynonymInterface("VERB")
-    return synonym_graph
+    return redirect(url_for('determine_original_similar_word'))
 
 
-@app.route('/det_simword', methods=['POST'])
+@app.route('orig_sim_word', methods=['POST'])
+def determine_original_similar_word():
+    return redirect(url_for('determine_similar_word'))
+
+
+@app.route('/sim_word', methods=['POST'])
 def determine_similar_word():
     return redirect(url_for('determine_similar_word'))
 
