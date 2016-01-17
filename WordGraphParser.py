@@ -5,6 +5,7 @@ import re
 import ast
 from OrderedSet import OrderedSet
 import time
+import cPickle as pickle
 
 """
 Class for initializing a word association graph from parsed scraped synonym data, returned as a dictionary.
@@ -38,7 +39,7 @@ def merge_lists(lists):
 
 def synonym_block_parser(block):
     header = re.search("\(\w+, \w+\)", block).group()
-    body = re.search("\[(\w|\s|'|,)+\]", block).group()
+    body = re.search("\[(\w|\s|'|\"|,|/|-)+\]", block).group()
     header_word = re.search("\([\s\S]+,", header).group()[1:-1]
     header_pos = re.search(", [\w]+\)", header).group()[2:-1]
     key_tup = (header_word, header_pos)
@@ -51,10 +52,9 @@ def initialize_graph(filepath):
     word_graph = {}
     with open(filepath, 'r') as myfile:
         data = myfile.read()
-    synonym_blocks = re.findall("(\(\w+, \w+\)\n\[(\w|\s|'|,)+\])", data)
+    synonym_blocks = re.findall("(\(\w+, \w+\)\n\[(\w|\s|'|\"|,|/|-)+\])", data)
     synonym_blocks = map(lambda x : x[0], synonym_blocks)
     block_collector = defaultdict(list)
-    # print synonym_blocks
     for block in synonym_blocks:
         tup = synonym_block_parser(block)
         block_collector[tup[0]].append(tup[1])
@@ -63,8 +63,20 @@ def initialize_graph(filepath):
     return word_graph
 
 
-
 # print initialize_graph("C:\\Users\\pgirardet\\Documents\\HackRice\\twenty-questions-thesaurus\\thesaurus_scraper"
 #                  "\\thesaurus_scraper\\test_words.txt")
-# initialize_graph("C:\\Users\\pgirardet\\Documents\\HackRice\\twenty-questions-thesaurus\\thesaurus_scraper"
+# graph = initialize_graph("C:\\Users\\pgirardet\\Documents\\HackRice\\twenty-questions-thesaurus\\thesaurus_scraper"
 #                  "\\thesaurus_scraper\\synonym_list.txt")
+# graph = initialize_graph("C:\\Users\\pgirardet\\Documents\\HackRice\\twenty-questions-thesaurus\\thesaurus_scraper"
+#                  "\\thesaurus_scraper\\delete_test.txt")
+# print len(graph)
+# def save_object(obj, filename):
+#     with open(filename, 'wb') as output:
+#         pickle.dump(obj, output, pickle.HIGHEST_PROTOCOL)
+#
+# sample usage
+# save_object(graph, 'synonym_graph.pkl')
+
+# with open('synonym_graph.pkl', 'rb') as input:
+#     graph = pickle.load(input)
+# print graph[('cope', 'verb')]
