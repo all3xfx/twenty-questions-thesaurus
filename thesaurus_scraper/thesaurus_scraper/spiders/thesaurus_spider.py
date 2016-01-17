@@ -1,7 +1,7 @@
 from scrapy import Spider
 import re
 import urlparse
-from start_urls import urls
+from thesaurus_urls import urls
 
 class ThesaurusSpider(Spider):
     name = "thesaurus"
