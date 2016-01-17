@@ -2,18 +2,14 @@
 {% block body %}
 <h3>Which of the following words are closest to the word you want?</h3><br>
 
-<form method=post action="{{ url_for('determine_similar_word') }}">
-  <div class="form-group">
-    <div class="radio">
-      <label><input type="radio" name="pos" id="NOUN">Noun</label>
-    </div>
-    <div class="radio" name="pos">
-      <label><input type="radio" name="pos" id="VERB">Verb</label>
-    </div>
-    <div class="radio" name="pos">
-      <label><input type="radio" name="pos" id="ADJECTIVE">Adjective</label>
-    </div>
-  </div><br>
-  <button type="submit" class="btn btn-default">continue</button>
+<form method=post action="{{ url_for('determine_similar_word', word={{word}}, syns={{syns}}) }}">
+    <div class="form-group">
+        {% for syn in syns %}
+        <div class="radio">
+            <label><input type="radio" name="simword" id="{{syn}}">{{syn}}</label>
+        </div>
+        {% endfor %}
+    </div><br>
+    <button type="submit" class="btn btn-default">continue</button>
 </form>
 {% endblock %}

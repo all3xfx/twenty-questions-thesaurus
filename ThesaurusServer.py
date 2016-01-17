@@ -26,6 +26,7 @@ def connect_db():
 # creating global variables
 synonym_graph = None
 current_synonym = None
+synonyms = []
 
 
 # routes
@@ -49,14 +50,18 @@ def determine_pos():
 def determine_original_similar_word():
     global current_synonym
     current_synonym = request.form['simword']
-    return redirect(url_for('determine_similar_word', word=current_synonym))
+    global synonyms
+    synonyms = SynonymInterface.find_synonyms(current_synonym)[:5]
+    return redirect(url_for('determine_similar_word', word=current_synonym, syns=synonyms))
 
 
 @app.route('/sim_word/<word>/')
-def determine_similar_word(word):
+def determine_similar_word(word, syns):
     global current_synonym
     current_synonym = request.form['simword']
-    return redirect(url_for('determine_similar_word', word=current_synonym))
+    global synonyms
+    synonyms = SynonymInterface.find_synonyms(current_synonym)[:5]
+    return redirect(url_for('determine_similar_word', word=current_synonym, syns=synonyms))
 
 
 @app.route('/<string:page_name>/')
