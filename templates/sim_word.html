@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+<h3>which of the following words is most similar to what you're thinking of?</h3><br>
+
+<form method=post action="{{ url_for('determine_original_similar_word') }}">
+    <div class="form-group">
+        {% for syn in syns %}
+        <div class="radio">
+          <label><input type="radio" name="simword" value="{{syn}}">{{syn}}</label>
+        </div>
+        {% endfor %}
+    </div><br>
+    <button type="submit" class="btn btn-default">continue</button>
+
+</form>
+{% endblock %}

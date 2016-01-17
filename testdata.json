@@ -1,0 +1,24 @@
+{
+  "NOUN":{
+    "red":["orange", "yellow", "crimson"],
+    "orange":["red", "yellow", "crimson"],
+    "yellow":["orange", "red"],
+    "run":["course", "race"],
+    "course":["run", "race"],
+    "race":["course", "run"],
+    "dash":["sprint", "bit", "pinch"],
+    "pinch":["dash", "bit", "compression"],
+    "bit":["dash", "pinch"]
+  },
+  "VERB":{
+    "run":["dash", "jog", "race"],
+    "dash":["run", "race"],
+    "jog":["run"],
+    "race":["run", "dash"]
+  },
+  "ADJECTIVE":{
+    "red":["orange", "yellow", "crimson"],
+    "orange":["red", "yellow"],
+    "yellow":["red", "orange"]
+  }
+}

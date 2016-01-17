@@ -1,0 +1,54 @@
+$font-stack: 'Muli', sans-serif;
+$color1: #FFE45D;
+$color2: #F99C44;
+$color3: #E31263;
+$color4: #FF7E73;
+$color5: #FFE2BD;
+
+body {
+  font-family: $font-stack;
+  color: #333;
+  text-transform: lowercase;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.jumbotron {
+  background-color: $color4;
+  color: $color1;
+  text-transform: lowercase;
+  letter-spacing: -0.5px;
+  margin: 0;
+  border-bottom: 15px solid $color3;
+
+  .title {
+    font-weight: bolder;
+  }
+
+  .subtitle {
+    color: lighten($color1, 5%);
+  }
+}
+
+.body {
+  margin: 0;
+  padding: 75px;
+  text-align: center;
+
+  .container {
+    padding: 25px;
+  }
+}
+
+.form-group {
+  width: 50%;
+}
+
+.footer {
+  background-color: $color5;
+  color: #555;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

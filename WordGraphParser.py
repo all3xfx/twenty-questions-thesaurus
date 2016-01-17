@@ -1,3 +1,5 @@
+import json
+import io
 from collections import defaultdict
 import re
 import ast
@@ -64,7 +66,5 @@ def initialize_graph(filepath):
 
 # print initialize_graph("C:\\Users\\pgirardet\\Documents\\HackRice\\twenty-questions-thesaurus\\thesaurus_scraper"
 #                  "\\thesaurus_scraper\\test_words.txt")
-x = time.time()
-initialize_graph("C:\\Users\\pgirardet\\Documents\\HackRice\\twenty-questions-thesaurus\\thesaurus_scraper"
-                 "\\thesaurus_scraper\\synonym_list.txt")
-print time.time() - x
+# initialize_graph("C:\\Users\\pgirardet\\Documents\\HackRice\\twenty-questions-thesaurus\\thesaurus_scraper"
+#                  "\\thesaurus_scraper\\synonym_list.txt")

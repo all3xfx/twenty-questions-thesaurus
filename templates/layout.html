@@ -1,11 +1,39 @@
 <!doctype html>
+<head>
 <title>20Q Thesaurus</title>
+
+<link href='https://fonts.googleapis.com/css?family=Muli' rel='stylesheet' type='text/css'>
+
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+</head>
 
-<div class="jumbotron">
-  <center><h1>20Q Thesaurus</h1></center>
-</div>
+<body>
+  <a href="/"><div class="jumbotron">
+    <center><h1 class="title">Twenty Questions Thesaurusr</h1></center>
+    <center><h3 class="subtitle">This is where you can find the word at the tip of your tongue</h3></center>
+    <!--<center><a href="http://www.thesaurus.com">This is where you should actually go though.</a></center>-->
+  </div></a>
 
-<div class="body">
-  {% block body %}{% endblock %}
-</div>
+  <div class="body">
+      <div class="container">
+          <center>{% block body %}{% endblock %}</center>
+      </div>
+  </div>
+
+  <div class="footer">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              &copy; Functional Javaholics 2016
+            </div>
+            <div class="col-md-4" align="center">
+              A HackRice 2016 project
+            </div>
+            <div class="col-md-4" align="right">
+              20Q Thesaurusr
+            </div>
+          </div>
+      </div>
+  </div>
+</body>

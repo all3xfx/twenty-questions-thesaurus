@@ -1,25 +1,27 @@
 from enum import Enum
 import WordGraphParser
+import json
+import WordGraphParser
 
-"""
-Enum class for standard parts of speech.
-"""
+
 class PartOfSpeech(Enum):
+    """
+    Enum class for standard parts of speech.
+    """
     NOUN = "NOUN"
     PRONOUN = "PRONOUN"
     VERB = "VERB"
     ADJECTIVE = "ADJECTIVE"
     ADVERB = "ADVERB"
     PREPOSITION = "PREPOSITION"
-    CONJUNCTION= "CONJUNCTION"
+    CONJUNCTION = "CONJUNCTION"
     INTERJECTION = "INTERJECTION"
 
 
-
-"""
-The main class for interacting with the word association graph and returning synonym lists to the server.
-"""
 class SynonymInterface:
+    """
+    The main class for interacting with the word association graph and returning synonym lists to the server.
+    """
     part_of_speech = PartOfSpeech.NOUN
     word_assoc_graph = None
 
@@ -28,7 +30,7 @@ class SynonymInterface:
             self.part_of_speech = PartOfSpeech(part_of_speech)
         else:
             self.part_of_speech = PartOfSpeech("NOUN")
-        self.word_assoc_graph = WordGraphParser.initialize_graph("graph_data.json")
+        self.word_assoc_graph = WordGraphParser.initialize_graph("thesaurus_scraper\\thesaurus_scraper\\synonym_list.txt")
 
     """
     Returns the synonyms of the input word in order of similarity.
@@ -36,4 +38,18 @@ class SynonymInterface:
     def find_synonyms(self, word):
         return self.word_assoc_graph[(word, self.part_of_speech)]
 
-
+    def deal_with_synonym_outside_of_graph(self, root, synonym):
+        """
+        When a synonym outside of the graph is encountered,
+        this should be run to find appropriate synonyms for that word.
+        :param root: a tuple key in the graph
+        :param synonym: a string key not in the graph
+        :return: a dict of string: list(string) showing the proper synonyms
+        """
+        close_synonyms = list(self.word_assoc_graph[root])
+        close_synonyms.remove(synonym)
+        output_synonyms = [root]
+        for syn in close_synonyms:
+            if synonym in self.word_assoc_graph[syn]:
+                output_synonyms.append(syn)
+        return {synonym: output_synonyms}
