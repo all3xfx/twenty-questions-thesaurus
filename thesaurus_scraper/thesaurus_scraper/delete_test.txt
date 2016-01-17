@@ -1,0 +1,11 @@
+(cope, verb)
+['wrestle', 'handle', 'confront', 'get by', 'grapple', 'endure', 'survive', 'suffer', 'tussle', 'deal', 'buffet', 'face', 'dispatch', 'weather', 'struggle', 'hack', 'tangle', 'encounter', 'carry on', 'hack it', 'make out', 'battle with', 'get a handle on', 'live with', 'make go of it', 'make it', 'make the grade', 'pit oneself against', 'rise to occasion', 'struggle through', "hold one's own"]
+
+(cope, verb)
+['wrestle', 'handle', 'confront', 'get by', 'grapple', 'endure', 'survive', 'suffer', 'tussle', 'deal', 'buffet', 'face', 'dispatch', 'weather', 'struggle', 'hack', 'tangle', 'encounter', 'carry on', 'hack it', 'make out', 'battle with', 'get a handle on', 'live with', 'make go of it', 'make it', 'make the grade', 'pit oneself against', 'rise to occasion', 'struggle through', "hold one's own"]
+
+(cope, verb)
+['wrestle', 'handle', 'confront', 'get by', 'grapple', 'endure', 'survive', 'suffer', 'tussle', 'deal', 'buffet', 'face', 'dispatch', 'weather', 'struggle', 'hack', 'tangle', 'encounter', 'carry on', 'hack it', 'make out', 'battle with', 'get a handle on', 'live with', 'make go of it', 'make it', 'make the grade', 'pit oneself against', 'rise to occasion', 'struggle through', "hold one's own"]
+
+(devise, verb)
+['come up with', 'concoct', 'prepare', 'formulate', 'create', 'discover', 'invent', 'craft', 'design', 'construct', 'hatch', 'forge', 'work out', 'mastermind', 'arrange', 'blueprint', 'plot', 'ad-lib', 'form', 'improvise', 'frame', 'machinate', 'contrive', 'chart', 'brainstorm', 'project', 'cast', 'shape', 'intrigue', 'plan', 'imagine', 'vamp', 'spark', 'scheme', 'cogitate', 'cook up', 'get off', 'head trip', 'make up', 'play it by ear', 'whip up', 'dope out', 'fake it', 'think up', 'throw together', 'trump up']

@@ -26,6 +26,7 @@ def connect_db():
 synonym_graph = None
 current_synonym = None
 synonyms = []
+part_of_speech = None
 
 
 # routes
@@ -41,7 +42,9 @@ def index():
 def determine_pos():
     # initializes synonym graph
     global synonym_graph
+    global part_of_speech
     synonym_graph = SynonymInterface(request.form['pos'].encode('ascii', 'ignore'))
+    part_of_speech = request.form['pos'].encode('ascii', 'ignore')
     return redirect(url_for('determine_original_similar_word'))
 
 
@@ -50,7 +53,8 @@ def determine_original_similar_word():
     global current_synonym
     current_synonym = request.form['simword'].encode('ascii', 'ignore')
     global synonyms
-    synonyms = filter(lambda x: x in synonym_graph.word_assoc_graph.keys(), SynonymInterface.find_synonyms(current_synonym))[:15]
+    synonyms = filter(lambda x: (x, part_of_speech) in synonym_graph.word_assoc_graph.keys(),
+                      synonym_graph.find_synonyms(current_synonym))[:15]
     return render_template('sim_word.html', syns=synonyms)
 
 
@@ -59,7 +63,8 @@ def determine_similar_word():
     global current_synonym
     current_synonym = request.form['simword'].encode('ascii', 'ignore')
     global synonyms
-    synonyms = filter(lambda x: x in synonym_graph.word_assoc_graph.keys(), SynonymInterface.find_synonyms(current_synonym))[:15]
+    synonyms = filter(lambda x: (x, part_of_speech) in synonym_graph.word_assoc_graph.keys(),
+                      synonym_graph.find_synonyms(current_synonym))[:15]
     return render_template('sim_word.html', syns=synonyms)
 
 

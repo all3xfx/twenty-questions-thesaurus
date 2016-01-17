@@ -2,6 +2,7 @@ from enum import Enum
 import WordGraphParser
 import json
 import WordGraphParser
+import cPickle as pickle
 
 
 # class PartOfSpeech(Enum):
@@ -31,6 +32,10 @@ class SynonymInterface:
         #     self.part_of_speech = PartOfSpeech(part_of_speech)
         # else:
         #     self.part_of_speech = PartOfSpeech("NOUN")
+        # with open('synonym_graph.pkl', 'rb') as input:
+        #     graph = pickle.load(input)
+        #     self.word_assoc_graph = graph
+        #     print "Synonym graph successfully loaded."
         self.word_assoc_graph = WordGraphParser.initialize_graph("thesaurus_scraper/thesaurus_scraper/synonym_list.txt")
 
     """
