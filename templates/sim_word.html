@@ -4,8 +4,16 @@
 
 <form method=post action="{{ url_for('determine_similar_word') }}">
   <div class="form-group">
-    <input type="text" class="form-control" name="simword">
-  </div>
+    <div class="radio">
+      <label><input type="radio" name="pos" id="NOUN">Noun</label>
+    </div>
+    <div class="radio" name="pos">
+      <label><input type="radio" name="pos" id="VERB">Verb</label>
+    </div>
+    <div class="radio" name="pos">
+      <label><input type="radio" name="pos" id="ADJECTIVE">Adjective</label>
+    </div>
+  </div><br>
   <button type="submit" class="btn btn-default">continue</button>
 </form>
 {% endblock %}
