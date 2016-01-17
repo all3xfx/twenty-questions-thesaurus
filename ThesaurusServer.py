@@ -50,7 +50,7 @@ def determine_original_similar_word():
     global current_synonym
     current_synonym = request.form['simword'].encode('ascii', 'ignore')
     global synonyms
-    synonyms = synonym_graph.find_synonyms(current_synonym)[:10]
+    synonyms = filter(lambda x: x in synonym_graph.word_assoc_graph.keys(), SynonymInterface.find_synonyms(current_synonym))[:15]
     return render_template('sim_word.html', syns=synonyms)
 
 
@@ -59,7 +59,7 @@ def determine_similar_word():
     global current_synonym
     current_synonym = request.form['simword'].encode('ascii', 'ignore')
     global synonyms
-    synonyms = SynonymInterface.find_synonyms(current_synonym)[:10]
+    synonyms = filter(lambda x: x in synonym_graph.word_assoc_graph.keys(), SynonymInterface.find_synonyms(current_synonym))[:15]
     return render_template('sim_word.html', syns=synonyms)
 
 
