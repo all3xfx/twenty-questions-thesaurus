@@ -30,7 +30,7 @@ class SynonymInterface:
             self.part_of_speech = PartOfSpeech(part_of_speech)
         else:
             self.part_of_speech = PartOfSpeech("NOUN")
-        self.word_assoc_graph = WordGraphParser.initialize_graph("thesaurus_scraper\\thesaurus_scraper\\synonym_list.txt")
+        self.word_assoc_graph = WordGraphParser.initialize_graph("thesaurus_scraper/thesaurus_scraper/synonym_list.txt")
 
     """
     Returns the synonyms of the input word in order of similarity.

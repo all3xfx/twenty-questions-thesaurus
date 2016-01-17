@@ -48,7 +48,7 @@ def determine_pos():
 @app.route('/orig_sim_word', methods=['POST'])
 def determine_original_similar_word():
     global current_synonym
-    current_synonym = request.form['simword']
+    current_synonym = request.form['simword'].encode('ascii', 'ignore')
     global synonyms
     synonyms = synonym_graph.find_synonyms(current_synonym)[:5]
     return render_template('sim_word.html', syns=synonyms)
@@ -57,7 +57,7 @@ def determine_original_similar_word():
 @app.route('/sim_word', methods=['POST'])
 def determine_similar_word():
     global current_synonym
-    current_synonym = request.form['simword']
+    current_synonym = request.form['simword'].encode('ascii', 'ignore')
     global synonyms
     synonyms = SynonymInterface.find_synonyms(current_synonym)[:5]
     return render_template('sim_word.html', syns=synonyms)
