@@ -1,6 +1,7 @@
 from enum import Enum
+import WordGraphParser
 import json
-from WordGraphParser import WordGraphParser
+import WordGraphParser
 
 
 class PartOfSpeech(Enum):
@@ -29,19 +30,19 @@ class SynonymInterface:
             self.part_of_speech = PartOfSpeech(part_of_speech)
         else:
             self.part_of_speech = PartOfSpeech("NOUN")
-        self.word_assoc_graph = WordGraphParser.initialize_graph("testdata.json")[self.part_of_speech.value]
+        self.word_assoc_graph = WordGraphParser.initialize_graph("thesaurus_scraper\\thesaurus_scraper\\synonym_list.txt")
 
     """
     Returns the synonyms of the input word in order of similarity.
     """
     def find_synonyms(self, word):
-        return self.word_assoc_graph[word]
+        return self.word_assoc_graph[(word, self.part_of_speech)]
 
     def deal_with_synonym_outside_of_graph(self, root, synonym):
         """
         When a synonym outside of the graph is encountered,
         this should be run to find appropriate synonyms for that word.
-        :param root: a string key in the graph
+        :param root: a tuple key in the graph
         :param synonym: a string key not in the graph
         :return: a dict of string: list(string) showing the proper synonyms
         """
