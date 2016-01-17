@@ -1,5 +1,5 @@
 from enum import Enum
-from WordGraphParser import WordGraphParser
+import WordGraphParser
 
 """
 Enum class for standard parts of speech.
@@ -34,6 +34,6 @@ class SynonymInterface:
     Returns the synonyms of the input word in order of similarity.
     """
     def find_synonyms(self, word):
-        return self.word_assoc_graph[word]
+        return self.word_assoc_graph[(word, self.part_of_speech)]
 
 
