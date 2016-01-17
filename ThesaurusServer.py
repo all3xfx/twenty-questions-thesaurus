@@ -17,6 +17,7 @@ PASSWORD = 'default'
 app = Flask(__name__)
 app.config.from_object(__name__)
 
+
 # connects to database
 def connect_db():
     return sqlite3.connect(app.config['DATABASE'])
@@ -24,6 +25,7 @@ def connect_db():
 
 # creating global variables
 synonym_graph = None
+current_synonym = None
 
 
 # routes
@@ -38,17 +40,21 @@ def index():
 @app.route('/det_pos', methods=['POST'])
 def determine_pos():
     # initializes synonym graph
-    synonym_graph = SynonymInterface("VERB")
+    global synonym_graph
+    synonym_graph = SynonymInterface(request.form['pos'])
     return redirect(url_for('determine_original_similar_word'))
 
 
 @app.route('orig_sim_word', methods=['POST'])
 def determine_original_similar_word():
+    global current_synonym
+    current_synonym = request.form['simword']
     return redirect(url_for('determine_similar_word'))
 
 
 @app.route('/sim_word', methods=['POST'])
 def determine_similar_word():
+    current_synonym = request.form['simword']
     return redirect(url_for('determine_similar_word'))
 
 
@@ -62,3 +68,4 @@ def static_page(page_name):
 # runs app
 if __name__ == '__main__':
     app.run()
+
