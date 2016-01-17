@@ -4,16 +4,16 @@
 
 <form method=post action="{{ url_for('determine_pos') }}">
   <div class="form-group">
+    <div class="radio">
+      <label><input type="radio" name="pos" id="NOUN">Noun</label>
+    </div>
     <div class="radio" name="pos">
-      <label><input type="radio" name="NOUN">Noun</label>
+      <label><input type="radio" name="pos" id="VERB">Verb</label>
     </div>
-    <div class="radio">
-      <label><input type="radio" name="VERB">Verb</label>
+    <div class="radio" name="pos">
+      <label><input type="radio" name="pos" id="ADJECTIVE">Adjective</label>
     </div>
-    <div class="radio">
-      <label><input type="radio" name="ADJECTIVE">Adjective/label>
-    </div>
-  </div>
+  </div><br>
   <button type="submit" class="btn btn-default">continue</button>
 </form>
 {% endblock %}

@@ -45,7 +45,7 @@ def determine_pos():
     return redirect(url_for('determine_original_similar_word'))
 
 
-@app.route('orig_sim_word', methods=['POST'])
+@app.route('/orig_sim_word', methods=['POST'])
 def determine_original_similar_word():
     global current_synonym
     current_synonym = request.form['simword']
