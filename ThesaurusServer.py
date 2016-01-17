@@ -1,9 +1,8 @@
 # all the imports
-from enum import Enum
 import sqlite3
 from SynonymInterface import SynonymInterface
 from flask import Flask, request, session, g, redirect, url_for, \
-     abort, render_template, flash
+     abort, render_template, flash, make_response
 
 
 # configuration
@@ -51,17 +50,18 @@ def determine_original_similar_word():
     global current_synonym
     current_synonym = request.form['simword']
     global synonyms
-    synonyms = SynonymInterface.find_synonyms(current_synonym)[:5]
+    synonyms = synonym_graph.find_synonyms(current_synonym)[:5]
     return redirect(url_for('determine_similar_word', word=current_synonym, syns=synonyms))
 
 
-@app.route('/sim_word/<word>/')
-def determine_similar_word(word, syns):
-    global current_synonym
-    current_synonym = request.form['simword']
-    global synonyms
-    synonyms = SynonymInterface.find_synonyms(current_synonym)[:5]
-    return redirect(url_for('determine_similar_word', word=current_synonym, syns=synonyms))
+@app.route('/sim_word/<word>', methods=['GET'])
+def determine_similar_word(word):
+    return request.args('word')
+    # global current_synonym
+    # current_synonym = request.form['simword']
+    # global synonyms
+    # synonyms = SynonymInterface.find_synonyms(current_synonym)[:5]
+    # return redirect(url_for('determine_similar_word', word=current_synonym, syns=synonyms))
 
 
 @app.route('/<string:page_name>/')
