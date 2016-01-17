@@ -1,7 +1,7 @@
 from scrapy import Spider
 import re
 import urlparse
-from thesaurus_urls import urls
+from thesaurus_urls_long import urls
 
 class ThesaurusSpider(Spider):
     name = "thesaurus"
@@ -11,7 +11,9 @@ class ThesaurusSpider(Spider):
 
 
     def parse(self, response):
-        wordname = response.url.split("/")[-1][:-4]
+        wordname = urlparse.unquote(response.url.split("/")[-1][:-4])
+        if wordname.startswith("web?s=t&q"):
+            return
         print "Scraping: " + wordname
         id_strings = re.findall('id="filter-\d"', response.body)
         max_id = max(map(lambda s: int(s[11:][:-1]), id_strings))
@@ -44,5 +46,5 @@ class ThesaurusSpider(Spider):
                 word = urlparse.unquote(word)
                 word_list.append(word)
         # print word_list
-        with open("synonym_logging.txt", "a") as myfile:
+        with open("synonym_list.txt", "a") as myfile:
             myfile.write("(" + wordname + ", " + part_of_speech + ")" "\n" + str(word_list) + "\n\n")
