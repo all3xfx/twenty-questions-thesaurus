@@ -2,7 +2,7 @@
 {% block body %}
 <h3>what's a word that's close to what you're looking for?</h3><br>
 
-<form method=post action="{{ url_for('determine_pos') }}">
+<form method=post action="{{ url_for('determine_original_similar_word') }}">
   <div class="form-group">
     <input type="text" class="form-control" name="simword">
   </div><br>

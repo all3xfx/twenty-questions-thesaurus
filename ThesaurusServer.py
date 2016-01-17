@@ -52,7 +52,7 @@ def determine_original_similar_word():
     return redirect(url_for('determine_similar_word', word=current_synonym))
 
 
-@app.route('/sim_word/<word>', methods=['POST'])
+@app.route('/sim_word/<word>/')
 def determine_similar_word(word):
     global current_synonym
     current_synonym = request.form['simword']
