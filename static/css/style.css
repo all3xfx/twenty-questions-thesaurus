@@ -20,8 +20,9 @@ a:hover {
 
 .body {
   margin: 0;
-  padding: 75px;
-  text-align: center; }
+  padding: 50px;
+  text-align: center;
+}
   .body .container {
     padding: 25px; }
 
@@ -33,5 +34,10 @@ a:hover {
   color: #555;
   padding-top: 20px;
   padding-bottom: 20px; }
+
+.btn {
+  padding: 20px;
+  border-radius: 25px;
+}
 
 /*# sourceMappingURL=style.css.map */
