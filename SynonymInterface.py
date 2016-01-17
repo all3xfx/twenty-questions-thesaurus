@@ -8,14 +8,14 @@ class PartOfSpeech(Enum):
     """
     Enum class for standard parts of speech.
     """
-    NOUN = "NOUN"
-    PRONOUN = "PRONOUN"
-    VERB = "VERB"
-    ADJECTIVE = "ADJECTIVE"
-    ADVERB = "ADVERB"
-    PREPOSITION = "PREPOSITION"
-    CONJUNCTION = "CONJUNCTION"
-    INTERJECTION = "INTERJECTION"
+    NOUN = "noun"
+    PRONOUN = "pronoun"
+    VERB = "verb"
+    ADJECTIVE = "adjective"
+    ADVERB = "adverb"
+    PREPOSITION = "preposition"
+    CONJUNCTION = "conjunction"
+    INTERJECTION = "interjection"
 
 
 class SynonymInterface:
