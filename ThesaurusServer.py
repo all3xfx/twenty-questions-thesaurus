@@ -41,7 +41,7 @@ def index():
 def determine_pos():
     # initializes synonym graph
     global synonym_graph
-    synonym_graph = SynonymInterface(request.form['pos'])
+    synonym_graph = SynonymInterface(request.form['pos'].encode('ascii', 'ignore'))
     return redirect(url_for('determine_original_similar_word'))
 
 
