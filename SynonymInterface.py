@@ -4,32 +4,33 @@ import json
 import WordGraphParser
 
 
-class PartOfSpeech(Enum):
-    """
-    Enum class for standard parts of speech.
-    """
-    NOUN = "noun"
-    PRONOUN = "pronoun"
-    VERB = "verb"
-    ADJECTIVE = "adjective"
-    ADVERB = "adverb"
-    PREPOSITION = "preposition"
-    CONJUNCTION = "conjunction"
-    INTERJECTION = "interjection"
+# class PartOfSpeech(Enum):
+#     """
+#     Enum class for standard parts of speech.
+#     """
+#     NOUN = "noun"
+#     PRONOUN = "pronoun"
+#     VERB = "verb"
+#     ADJECTIVE = "adjective"
+#     ADVERB = "adverb"
+#     PREPOSITION = "preposition"
+#     CONJUNCTION = "conjunction"
+#     INTERJECTION = "interjection"
 
 
 class SynonymInterface:
     """
     The main class for interacting with the word association graph and returning synonym lists to the server.
     """
-    part_of_speech = PartOfSpeech.NOUN
+    part_of_speech = "noun"
     word_assoc_graph = None
 
     def __init__(self, part_of_speech):
-        if part_of_speech in PartOfSpeech._member_names_:
-            self.part_of_speech = PartOfSpeech(part_of_speech)
-        else:
-            self.part_of_speech = PartOfSpeech("NOUN")
+        self.part_of_speech = part_of_speech
+        # if part_of_speech in PartOfSpeech._member_names_:
+        #     self.part_of_speech = PartOfSpeech(part_of_speech)
+        # else:
+        #     self.part_of_speech = PartOfSpeech("NOUN")
         self.word_assoc_graph = WordGraphParser.initialize_graph("thesaurus_scraper/thesaurus_scraper/synonym_list.txt")
 
     """
